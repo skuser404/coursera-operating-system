@@ -1,0 +1,26 @@
+#ifndef MYMALLOC_H
+#define MYMALLOC_H
+
+#include <stddef.h>
+
+// Structure of a block in memory
+struct block {
+    size_t size;         // Size of the block
+    int free;            // 1 if free, 0 if allocated
+    struct block *next;  // Pointer to the next block in the free list
+};
+
+// Global memory array of size 20000
+extern char memory[20000];
+
+// Global pointer to the free list
+extern struct block *freeList;
+
+// Function declarations
+void initialize();
+void split(struct block *fitting_slot, size_t size);
+void *MyMalloc(size_t noOfBytes);
+void merge();
+void MyFree(void *ptr);
+
+#endif

@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include "mymalloc.h"
+
+int main() {
+    // Allocate memory for an array of 100 integers
+    int *p = (int *)MyMalloc(100 * sizeof(int));
+    
+    // Allocate memory for a char array of size 250
+    char *q = (char *)MyMalloc(250 * sizeof(char));
+    
+    // Allocate a large chunk of memory for an array of 1000 integers
+    int *r = (int *)MyMalloc(1000 * sizeof(int));
+    
+    // Free the first allocation
+    MyFree(p);
+    
+    // Allocate memory for another chunk of 700 bytes
+    char *w = (char *)MyMalloc(700);
+    
+    // Free the large array of 1000 integers
+    MyFree(r);
+    
+    // Allocate memory for 500 integers
+    int *k = (int *)MyMalloc(500 * sizeof(int));
+    
+    printf("Allocation and deallocation is done successfully!\n");
+    
+    return 0;
+}
